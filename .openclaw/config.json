@@ -1,0 +1,24 @@
+{
+  "agents": {
+    "list": [
+      {
+        "id": "xiaomiao",
+        "name": "小喵",
+        "default": true,
+        "workspace": "/Users/lei/.openclaw/workspace"
+      },
+      {
+        "id": "trump",
+        "name": "特朗普",
+        "workspace": "/Users/lei/.openclaw/workspace-trump"
+      }
+    ]
+  },
+  "models": {
+    "providers": {
+      "ollama": {
+        "enabled": false
+      }
+    }
+  }
+}

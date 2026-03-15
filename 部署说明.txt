@@ -1,0 +1,73 @@
+采用了 ollama 下载 的本地模式配置的
+
+安装 ollama 软件
+
+下载 模型 
+
+安装 open-webui。ollama UI管理页面 ollama推荐的 ollama-webui pull 失败
+
+docker pull ghcr.io/open-webui/open-webui:main
+
+docker run -d \
+-p 3000:8080 \
+--name open-webui \
+-v open-webui:/app/backend/data \
+ghcr.io/open-webui/open-webui:main
+
+
+echo 'export OLLAMA_API_KEY="ollama-local"' >> ~/.zshrc
+source ~/.zshrc
+
+
+# 初始化配置 + 安装后台服务
+openclaw onboard --install-daemon
+
+# 启动后台服务
+openclaw daemon start
+
+# 启动 Agent
+openclaw agent start
+
+# 查看模型状态
+openclaw models list
+openclaw models status
+
+# 测试聊天
+openclaw chat
+
+
+# 1. 安装依赖
+pnpm install
+
+# 2. 初始化 + 安装 daemon
+pnpm openclaw onboard --install-daemon
+
+# 3. 启动后台服务
+pnpm openclaw daemon start
+
+# 4. 启动 Agent
+pnpm openclaw agent start
+
+# 5. 查看模型
+pnpm openclaw models list
+
+# 6. 测试 Agent
+pnpm openclaw chat
+
+# 7. 启动可视化管理页面
+pnpm openclaw dashboard
+
+
+pnpm openclaw gateway install
+
+pnpm openclaw gateway restart
+
+pnpm openclaw daemon status
+
+pnpm openclaw agents list
+
+| 命令                                    | 说明                    |
+| ------------------------------------- | --------------------- |
+| `pnpm openclaw agent start -m "启动消息"` | 源码模式标准启动，需要指定消息       |
+| `pnpm openclaw agent start --tui`     | TUI 前台交互，自动生成消息，更适合测试 |
+| `pnpm openclaw agent start --detach`  | 后台启动，需指定 `-m` 或配置默认消息 |
